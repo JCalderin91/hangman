@@ -33,6 +33,10 @@ function App() {
     setRandomWord();
   };
 
+  const isWinner = !word
+    .split("")
+    .filter((letter) => !lettersSelected.includes(letter)).length;
+
   return (
     <div className="App">
       <div className="intents">Intentos restantes: {intents}</div>
@@ -45,7 +49,7 @@ function App() {
               )
           : word}
       </p>
-      {intents > 0 ? (
+      {intents > 0 && !isWinner ? (
         <div className="letters">
           {"abcdefghijklmnñopqrstuvwxyz"
             .toLocaleUpperCase()
@@ -62,9 +66,10 @@ function App() {
               );
             })}
         </div>
-      ) : (
-        <p className="game-over">Game over</p>
-      )}
+      ) : null}
+
+      {isWinner ? <p className="game-over">Ganaste</p> : null}
+      {intents <= 0 ? <p className="game-over">Game over</p> : null}
       <button className="reset" onClick={reset}>
         Reiniciar
       </button>
