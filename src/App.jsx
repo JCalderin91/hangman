@@ -7,23 +7,44 @@ const words =
     .toUpperCase()
     .split(",");
 
+let bestRecord = window.localStorage.getItem("bestRecord") || 0;
+
 function App() {
   const [lettersSelected, setLettersSelected] = useState("");
   const [intents, setIntents] = useState(5);
   const [word, setWord] = useState("");
+  const [currentRecord, setCurrentRecord] = useState(0);
+
+  const isWinner = !word
+    .split("")
+    .filter((letter) => !lettersSelected.includes(letter)).length;
 
   const setRandomWord = () => {
     setWord(words[Math.floor(Math.random() * words.length)]);
   };
   useEffect(() => {
     setRandomWord();
-  }, [words]);
+  }, []);
+
+  useEffect(() => {
+    if (word && isWinner) {
+      console.log("setCurrentRecord", isWinner);
+      setCurrentRecord((newRecord) => {
+        window.localStorage.setItem("bestRecord", newRecord + 1);
+        return newRecord + 1;
+      });
+    }
+  }, [isWinner]);
 
   const addLetter = (letter) => {
     if (lettersSelected.includes(letter)) return false;
     setLettersSelected(lettersSelected + letter);
     if (!word.includes(letter)) {
       setIntents(intents - 1);
+      console.log({ intents });
+      if (intents <= 1) {
+        setCurrentRecord(0);
+      }
     }
   };
 
@@ -33,12 +54,14 @@ function App() {
     setRandomWord();
   };
 
-  const isWinner = !word
-    .split("")
-    .filter((letter) => !lettersSelected.includes(letter)).length;
+  if (currentRecord > bestRecord) bestRecord = currentRecord;
 
   return (
     <div className="App">
+      <header className="header">
+        <div className="current-record">Record actual: {currentRecord}</div>
+        <div className="best-record">Mejor record: {bestRecord}</div>
+      </header>
       <div className="intents">Intentos restantes: {intents}</div>
       <p className="hidden-word">
         {intents > 0
