@@ -20,6 +20,7 @@ function App() {
   }, [words]);
 
   const addLetter = (letter) => {
+    if (lettersSelected.includes(letter)) return false;
     setLettersSelected(lettersSelected + letter);
     if (!word.includes(letter)) {
       setIntents(intents - 1);
@@ -31,9 +32,10 @@ function App() {
     setIntents(5);
     setRandomWord();
   };
+
   return (
     <div className="App">
-      Intentos restantes: {intents}
+      <div className="intents">Intentos restantes: {intents}</div>
       <p className="hidden-word">
         {intents > 0
           ? word
