@@ -1,29 +1,31 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap");
 body {
   background-color: #f2f2f2;
   min-height: 100vh;
   background-image: url("assets/images/cuaderno-rayado-blanco-papel-blanco-linea-patron-papel-cuadriculado-proceso-diseno-grafico-trabajo_109660-31.webp");
   background-position: center;
-  /* font-family: "Mali", cursive; */
 }
 .App {
+  font-family: "Mali", cursive;
   max-width: 500px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   min-height: 100vh;
 }
 .header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .intents {
   text-align: center;
   font-size: 1.15rem;
+  margin-top: 1rem;
 }
 
 .hidden-word {
-  margin-left: 1rem;
+  margin: 0 0 1rem 1rem;
   font-size: 2rem;
   letter-spacing: 1rem;
   text-align: center;
@@ -35,7 +37,7 @@ body {
   flex-wrap: wrap;
   max-width: 350px;
   margin: 0 auto;
-  padding: 0 0.5rem;
+  padding: 0 0.3rem;
 }
 
 .letter {
@@ -68,7 +70,7 @@ body {
   font-size: 1.3rem;
 }
 
-.reset {
+[class^="button-"] {
   display: block;
   margin: 0 auto;
   margin-top: 1.5rem;
@@ -78,13 +80,29 @@ body {
   font-size: 1.1rem;
   color: white;
   user-select: none;
+}
+[class^="button-"]:active {
+  transform: translateY(0.1rem);
+}
+.button-continue {
+  background-color: rgb(20, 177, 104);
+  border-bottom: 0.3rem solid rgb(11, 126, 72);
+}
+.button-continue:hover {
+  background-color: rgb(15, 153, 89);
+  border-bottom: 0.3rem solid rgb(11, 129, 74);
+}
+
+.button-reset {
   background-color: rgb(201, 38, 60);
   border-bottom: 0.3rem solid rgb(151, 8, 27);
 }
-.reset:active {
-  transform: translateY(0.1rem);
-}
-.reset:hover {
+.button-reset:hover {
   background-color: rgb(180, 30, 50);
   border-bottom: 0.3rem solid rgb(151, 8, 27);
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
 }
