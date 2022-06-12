@@ -1,11 +1,11 @@
 export const HiddenWord = ({ word, intents, lettersSelected }) => {
   return (
-    <p className="hidden-word">
-      {intents > 0
-        ? word
-            .split("")
-            .map((letter) => (lettersSelected[letter] ? letter : "_"))
-        : word}
-    </p>
+    <div className="hidden-word">
+      {word.split("").map((letter) => (
+        <div className="letter">
+          {lettersSelected[letter] ? letter : intents > 0 ? "_" : letter}
+        </div>
+      ))}
+    </div>
   );
 };
