@@ -18,6 +18,11 @@ body {
   justify-content: space-between;
   margin-bottom: 1rem;
 }
+.header svg {
+  display: inline-block;
+  transform: translateY(5px);
+  height: 1.5rem;
+}
 
 .intents {
   text-align: center;
