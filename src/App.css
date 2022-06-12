@@ -11,6 +11,7 @@ body {
   margin: 0 auto;
   padding: 1rem 1rem;
   min-height: 100vh;
+  user-select: none;
 }
 .header {
   display: flex;
@@ -29,6 +30,7 @@ body {
   font-size: 2rem;
   letter-spacing: 1rem;
   text-align: center;
+  user-select: none;
 }
 
 .letters {
@@ -80,6 +82,7 @@ body {
   font-size: 1.1rem;
   color: white;
   user-select: none;
+  font-family: "Mali", cursive;
 }
 [class^="button-"]:active {
   transform: translateY(0.1rem);
