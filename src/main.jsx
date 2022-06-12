@@ -4,6 +4,12 @@ import App from "./App";
 
 import "./index.css";
 
+import { registerSW } from "virtual:pwa-register";
+if ("serviceWorker" in navigator) {
+  // && !/localhost/.test(window.location)) {
+  registerSW();
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

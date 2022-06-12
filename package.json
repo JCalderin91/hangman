@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "prepreview": "vite build",
+    "prehttps-preview": "vite build",
+    "https-preview": "serve dist",
+    "preview": "vite preview --host"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -12,6 +15,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
-    "vite": "^2.7.2"
+    "https-localhost": "^4.7.1",
+    "vite": "^2.7.2",
+    "vite-plugin-pwa": "^0.12.0"
   }
 }
