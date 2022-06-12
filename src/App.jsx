@@ -74,6 +74,11 @@ function App() {
     setRandomWord();
   };
 
+  const handleSound = () => {
+    window.localStorage.setItem("sound", !sound);
+    setSound(!sound);
+  };
+
   if (currentRecord > bestRecord) bestRecord = currentRecord;
 
   return (
@@ -111,7 +116,7 @@ function App() {
         {isWinner ? "Continue" : "Reiniciar"}
       </button>
       <br />
-      <SoundOnOff state={sound} onClick={() => setSound(!sound)} />
+      <SoundOnOff state={sound} onClick={handleSound} />
     </div>
   );
 }
