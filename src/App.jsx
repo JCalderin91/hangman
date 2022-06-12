@@ -15,7 +15,7 @@ import { words, letters } from "./assets/constants.js";
 import { SoundOnOff } from "./ui/atoms/ToggleSound";
 
 let bestRecord = window.localStorage.getItem("bestRecord") || 0;
-let soundStorage = window.localStorage.getItem("sound") || false;
+let soundStorage = Number(window.localStorage.getItem("sound")) || 0;
 
 function App() {
   const [sound, setSound] = useState(soundStorage);
@@ -75,8 +75,8 @@ function App() {
   };
 
   const handleSound = () => {
-    window.localStorage.setItem("sound", !sound);
-    setSound(!sound);
+    window.localStorage.setItem("sound", sound ? 0 : 1);
+    setSound(sound ? 0 : 1);
   };
 
   if (currentRecord > bestRecord) bestRecord = currentRecord;
